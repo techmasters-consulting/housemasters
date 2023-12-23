@@ -93,6 +93,7 @@
                         </div>
                   </div>
                   <div class="container">
+                      <a href="/listings">View All Properties</a>
                         <div class="card">
                             <div class="card-header">
                               <img src="https://images.unsplash.com/photo-1595222016771-1843541fa718?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80" alt="rover" />

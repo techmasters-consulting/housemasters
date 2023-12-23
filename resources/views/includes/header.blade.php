@@ -100,6 +100,10 @@
                             <a href="#details" data-toggle="scroll-link" data-dimiss="jpanel-menu" class="nav-link text-capitalize"> <span class="nav-link-inner" data-title="Details">Details</span> </a>
                         </li>
                         <li class="nav-item">
+                            <a href="/listings" data-toggle="scroll-link" data-dimiss="jpanel-menu" class="nav-link text-capitalize"> <span class="nav-link-inner" data-title="Listings">Listings</span> </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="#gallery" data-toggle="scroll-link" data-dimiss="jpanel-menu" class="nav-link text-capitalize"> <span class="nav-link-inner" data-title="Gallery">Gallery</span> </a>
                         </li>
                         <li class="nav-item">
