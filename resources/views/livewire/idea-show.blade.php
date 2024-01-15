@@ -3,17 +3,32 @@
 
         <div class="idea-container bg-white rounded-xl flex mt-4">
             <div class="flex flex-col md:flex-row flex-1 px-4 py-6">
-{{--                <div class="flex-none mx-2">--}}
-{{--                    <a href="#">--}}
-{{--                        <img src="{{ $idea->user->getAvatar() }}" alt="avatar" class="w-14 h-14 rounded-xl">--}}
-{{--                    </a>--}}
-{{--                </div>--}}
+               <div class="flex-none mx-2">
+                  <a href="#">
+                      <img src="{{ $idea->user->getAvatar() }}" alt="avatar" class="w-14 h-14 rounded-xl">
+                  </a>
+              </div>
                 <div class="w-full mx-2 md:mx-4">
-{{--                    <h4 class="text-xl font-semibold mt-2 md:mt-0">--}}
-{{--                        {{ $idea->title }}--}}
-{{--                    </h4>--}}
+                                       <h4 class="text-xl font-semibold mt-2 md:mt-0">
+              {{ $idea->title }}
+                    </h4>
                     <div class=" mt-3">
-                        <img src="{{asset($idea->photo)}}" alt="{{ $idea->title}}">
+                      
+                        <form wire:submit="save">
+    
+    @error('photos.*') <span class="error">{{ $message }}</span> @enderror
+    @if ($photos) 
+    
+      <img src="{{ $photos[0]->temporaryUrl()}}">
+    @endif
+
+
+    
+    <label for="file-upload" class="custom-file-upload">
+    <i class="fa fa-cloud-upload"></i> Custom Upload
+</label>
+<input id="file-upload" type="file" wire:model="photos" multiple />
+</form>
                     </div>
                         <div class="text-gray-600 mt-3">
                         @admin

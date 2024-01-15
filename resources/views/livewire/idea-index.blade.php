@@ -11,11 +11,42 @@
         }
     "
     class="idea-container  mt-10 hover:shadow-card transition duration-150 ease-in rounded-3xl flex cursor-pointer"
->
+><style>
+        @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+        * {
+            box-sizing: border-box;
+        }
+
+
+
+
+        .tag {
+            background: #cccccc;
+            border-radius: 50px;
+            font-size: 12px;
+            margin: 0;
+            color: #fff;
+            padding: 2px 10px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        .tag-teal {
+            background-color: #47bcd4;
+        }
+        .tag-purple {
+            background-color: #5e76bf;
+        }
+        .tag-pink {
+            background-color: #cd5b9f;
+        }
+
+
+
+    </style>
     <div class="hidden md:block border-r  border-gray-100 px-5 py-6">
         <div class="text-center">
             <div class="font-semibold text-2xl @if ($hasVoted) text-green @endif">{{ $votesCount }}</div>
-            <div class="text-gray-500">Prospect(s)</div>
+            <div class="text-gray-500">Request(s)</div>
         </div>
 
         <div class="mt-8">
@@ -27,25 +58,30 @@
         </div>
     </div>
     <div class="flex flex-col md:flex-row flex-1 px-2 py-6">
-{{--        <div class="flex-none mx-2 md:mx-0">--}}
-{{--            <a href="#">--}}
-{{--                <img src="{{ $idea->user->getAvatar() }}" alt="avatar" class="w-14 h-14 rounded-xl">--}}
-{{--            </a>--}}
-{{--        </div>--}}
+       <div class="flex-none mx-2 md:mx-0">
+           <a href="#">
+              <img src="{{ $idea->user->getAvatar() }}" alt="avatar" class="w-14 h-14 rounded-xl">
+            </a>
+       </div>
         <div class="w-full flex flex-col justify-between  md:mx-4">
             <h4 class="text-xl hidden font-semibold mt-2 md:mt-0">
                 <a href="{{ route('idea.show', $idea) }}" class="idea-link hover:underline">{{ $idea->title }}</a>
+                3bedroom Aparment in flic, with 3 baths
+
             </h4>
             <div class="w-full mt-3">
-                <img src="{{asset($idea->photo)}}" alt="{{ $idea->title}}s">
+                <img src="{{asset('storage/photo/'.$idea->photo)}}" alt="{{ $idea->photo}}">
+             
             </div>
             <div class="text-gray-600 mt-3 line-clamp-3">
                 @admin
-                    @if ($idea->spam_reports > 0)
+                    @if ($idea->spam_reports > 0)|
                         <div class="text-red mb-2">Spam Reports: {{ $idea->spam_reports }}</div>
                     @endif
                 @endadmin
                 {{ $idea->description }}
+                design  An exploration into the truck's polarising design  An exploration into the truck's polarising design  An exploration into the truck's polarising design
+
             </div>
 
             <div class="flex flex-col md:flex-row md:items-center justify-between mt-6">
@@ -54,6 +90,8 @@
                         <img src="{{asset($idea->user->getAvatar())}}"  alt="avatar" class="w-14 h-14 rounded-xl">
                     </a>
                     <div>{{ $idea->created_at->diffForHumans() }}</div>
+                    <div>&bull;</div>
+                    <div> <span class="tag tag-teal">{{ $idea->location->name }}</span></div>
                     <div>&bull;</div>
                     <div>{{ $idea->category->name }}</div>
                     <div>&bull;</div>
@@ -69,25 +107,27 @@
                 <div class="flex items-center md:hidden mt-4 md:mt-0">
                     <div class="bg-gray-100 text-center rounded-xl h-10 px-4 py-2 pr-8">
                         <div class="text-sm font-bold leading-none @if ($hasVoted) text-blue @endif">{{ $votesCount }}</div>
-                        <div class="text-xxs font-semibold leading-none text-gray-400">Votes</div>
+                        <div class="text-xxs font-semibold leading-none text-gray-400">Requests</div>
                     </div>
                     @if ($hasVoted)
                         <button
                             wire:click.prevent="vote"
                             class="w-20 bg-blue text-white border border-blue font-bold text-xxs uppercase rounded-xl hover:bg-blue-hover transition duration-150 ease-in px-4 py-3 -mx-5"
                         >
-                            Voted
+                           Requested
                         </button>
                     @else
                         <button
                             wire:click.prevent="vote"
                             class="w-20 bg-gray-200 border border-gray-200 font-bold text-xxs uppercase rounded-xl hover:border-gray-400 transition duration-150 ease-in px-4 py-3 -mx-5"
                         >
-                            Vote
+                            Request
                         </button>
                     @endif
                 </div>
             </div>
         </div>
     </div>
+
+
 </div>

@@ -49,6 +49,14 @@ class Idea extends Model
         return $this->belongsTo(Status::class);
     }
 
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
+    public function files()
+    {
+        return $this->hasMany(File::class);
+    }
     public function votes()
     {
         return $this->belongsToMany(User::class, 'votes');

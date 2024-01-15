@@ -2,12 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\IdeaExport;
 use App\Models\Idea;
 use App\Models\Vote;
+use Livewire\WithFileUploads;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class IdeaController extends Controller
 {
+
+    use WithFileUploads;
+ 
+    #[Validate('image|max:1024')] // 1MB Max
+    public $photos;
     /**
      * Display a listing of the resource.
      *
@@ -87,6 +96,34 @@ class IdeaController extends Controller
      */
     public function destroy(Idea $idea)
     {
-        //
+
     }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+//    public function manage()
+//    {
+//        return view('idea.manage');
+//    }
+    public function manage()
+    {
+        $ideas = Idea::all();
+
+        return view('idea.manage', [
+            'idea' => $ideas
+        ]);
+    }
+    public function idea_export(){
+        return Excel::download(new IdeaExport, 'ideas.xlsx');
+    }
+
+   
+ 
+    public function save()
+    {
+        $this->photos->store('photos');
+    }
+
 }

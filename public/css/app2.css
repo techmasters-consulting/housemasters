@@ -148427,5 +148427,14 @@ select {
     .\32xl\:line-clamp-none {
         -webkit-line-clamp: unset;
     }
+    input[type="file"] {
+        display: none;
+    }
+    .custom-file-upload {
+        border: 1px solid #ccc;
+        display: inline-block;
+        padding: 2px 4px;
+        cursor: pointer;
+    }
 }
 

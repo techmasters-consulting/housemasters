@@ -5,13 +5,15 @@ namespace App\Http\Livewire;
 use App\Exceptions\DuplicateVoteException;
 use App\Exceptions\VoteNotFoundException;
 use App\Http\Livewire\Traits\WithAuthRedirects;
+use Livewire\WithFileUploads;
 use App\Models\Idea;
 use Livewire\Component;
 
 class IdeaShow extends Component
 {
-    use WithAuthRedirects;
-
+    use WithAuthRedirects, WithFileUploads;
+    #[Validate(['photos.*' => 'image|max:1024'])]
+    public $photos = [];
     public $idea;
     public $votesCount;
     public $hasVoted;
@@ -96,5 +98,14 @@ class IdeaShow extends Component
     public function render()
     {
         return view('livewire.idea-show');
+    }
+
+   
+ 
+    public function save()
+    {
+        foreach ($this->photos as $photo) {
+            $photo->store('photos');
+        }
     }
 }

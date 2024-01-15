@@ -1,4 +1,4 @@
 <x-app-layout>
-    <livewire:ideas-index />
+    <livewire:ideas-manage />
 
 </x-app-layout>

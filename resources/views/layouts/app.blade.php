@@ -47,8 +47,8 @@
                 <div>&bull;</div>
                 <livewire:comment-notifications />
                 <div>&bull;</div>
-                <img src="{{ Auth::user()->getAvatar() }} " alt="avatar"
-                     class="w-10 h-10 rounded-full"/>
+                <a href="/manage"><img src="{{ Auth::user()->getAvatar() }} " alt="avatar"
+                     class="w-10 h-10 rounded-full"/></a>
             </div>
 
         @else
