@@ -21,11 +21,11 @@ class NotifyAllVotersTest extends TestCase
     public function it_sends_an_email_to_all_voters()
     {
         $user = User::factory()->create([
-            'email' => 'andre_madarang@hotmail.com',
+            'email' => 'housemaster.mu@gmail.com',
         ]);
 
         $userB = User::factory()->create([
-            'email' => 'user@user.com',
+            'email' => 'housemaster.mu@gmail.com',
         ]);
 
         $idea = Idea::factory()->create();
@@ -45,13 +45,13 @@ class NotifyAllVotersTest extends TestCase
         NotifyAllVoters::dispatch($idea);
 
         Mail::assertQueued(IdeaStatusUpdatedMailable::class, function ($mail) {
-            return $mail->hasTo('andre_madarang@hotmail.com')
-                && $mail->build()->subject === 'An idea you voted for has a new status';
+            return $mail->hasTo('housemaster.mu@gmail.com')
+                && $mail->build()->subject === 'A Property you voted for has a new status';
         });
 
         Mail::assertQueued(IdeaStatusUpdatedMailable::class, function ($mail) {
-            return $mail->hasTo('user@user.com')
-                && $mail->build()->subject === 'An idea you voted for has a new status';
+            return $mail->hasTo('housemaster.mu@gmail.com')
+                && $mail->build()->subject === 'A Property you voted for has a new status';
         });
     }
 }

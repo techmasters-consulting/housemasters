@@ -58,15 +58,15 @@
         </div>
     </div>
     <div class="flex flex-col md:flex-row flex-1 px-2 py-6">
-       <div class="flex-none mx-2 md:mx-0">
+       <!-- <div class="flex-none mx-2 md:mx-0">
            <a href="#">
               <img src="{{ $idea->user->getAvatar() }}" alt="avatar" class="w-14 h-14 rounded-xl">
             </a>
-       </div>
+       </div> -->
         <div class="w-full flex flex-col justify-between  md:mx-4">
-            <h4 class="text-xl hidden font-semibold mt-2 md:mt-0">
+            <h4 class="text-xl  font-semibold mt-2 md:mt-0">
                 <a href="{{ route('idea.show', $idea) }}" class="idea-link hover:underline">{{ $idea->title }}</a>
-                3bedroom Aparment in flic, with 3 baths
+              
 
             </h4>
             <div class="w-full mt-3">
@@ -80,7 +80,6 @@
                     @endif
                 @endadmin
                 {{ $idea->description }}
-                design  An exploration into the truck's polarising design  An exploration into the truck's polarising design  An exploration into the truck's polarising design
 
             </div>
 
@@ -91,7 +90,7 @@
                     </a>
                     <div>{{ $idea->created_at->diffForHumans() }}</div>
                     <div>&bull;</div>
-                    <div> <span class="tag tag-teal">{{ $idea->location->name }}</span></div>
+                    <div> <span class="{{ $idea->location->classes }}">{{ $idea->location->name }}</span></div>
                     <div>&bull;</div>
                     <div>{{ $idea->category->name }}</div>
                     <div>&bull;</div>
