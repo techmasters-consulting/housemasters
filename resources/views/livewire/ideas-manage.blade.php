@@ -4,7 +4,7 @@
     <header x-data="{ mobileMenuOpen : false }" class=" fixed w-full lg:hidden bg-green bg-opacity-25    py-6 px-6 ">
         <div class="justify-between flex-row flex-wrap flex ">
             <a href="/" class="block flex flex-row">
-                <span class="sr-only">Island Homes</span>
+                <span class="sr-only">House Master</span>
                 <img class="h-6 md:h-8" src="{{ asset('img/logo.png') }}" alt="HouseMaster " title="HouseMaster"/>
                 <span class="font-medium text-xl font-ram text-green1  tracking-tight">HouseMaster</span>
             </a>
@@ -29,12 +29,20 @@
                 @auth
 
                     <div class="flex items-center flex-col px-4 py-2 pt-6">
+                    <div class="my-2">
+                        <a
+                            href="/manage"
+                            class="inline-block justify-center w-1/4 h-11 text-xs bg-green text-green1 font-semibold rounded-xl border border-green hover:border-green1 transition duration-150 ease-in px-6 py-3"
+                        >
+                        Add a Property
+                        </a>
+</div>
                         <div class="">
-                            <img src="{{ Auth::user()->getAvatar() }}" alt="avatar"
-                                 class="w-10 h-10 rounded-full"/>
+                        <a href="/manage"><img src="{{ Auth::user()->getAvatar() }} " alt="avatar"
+                     class="w-10 h-10 rounded-full"/></a>
                         </div>
                         <div class=" justify-center flex flex-row text-xs text-gray-400 font-semibold space-x-2 ">
-
+                       
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 
@@ -52,6 +60,9 @@
                         </div>
                         <div class="my-1 ">
                             <livewire:status-filters />
+                        </div>
+                       
+                          
                         </div>
                     </div>
                     <div class="filters px-4">
@@ -111,6 +122,14 @@
                         </div>
 
                     </div>
+
+                    <div class="my-2">
+                        <a
+                            href="/manage"
+                            class="inline-block justify-center w-1/4 h-11 text-xs bg-green text-green1 font-semibold rounded-xl border border-green hover:border-green1 transition duration-150 ease-in px-6 py-3"
+                        >
+                        Add a Property
+                        </a>
                 @else
                     <div class="my-6 text-center">
                         <div class="text-center px-6 py-2 pt-6">

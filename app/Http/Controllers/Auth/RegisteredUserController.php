@@ -43,7 +43,8 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]));
-
+        // Send the welcome email
+        Mail::to($user->email)->send(new WelcomeEmail());
         event(new Registered($user));
 
         return redirect()->intended(RouteServiceProvider::HOME);

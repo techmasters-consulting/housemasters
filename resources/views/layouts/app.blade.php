@@ -44,6 +44,14 @@
                         {{ __('Log Out') }}
                     </a>
                 </form>
+                <div class="my-2">
+                        <a
+                            href="/manage"
+                            class=" justify-center w-1/4 h-11 text-xs bg-green text-green1 font-semibold rounded-xl border border-green hover:border-green1 transition duration-150 ease-in px-6 py-3"
+                        >
+                        Add Property
+                        </a>
+</div>
                 <div>&bull;</div>
                 <livewire:comment-notifications />
                 <div>&bull;</div>
