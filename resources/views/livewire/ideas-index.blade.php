@@ -30,8 +30,8 @@
 
                     <div class="flex items-center flex-col px-4 py-2 pt-6">
                         <div class="">
-                            <img src="{{ Auth::user()->getAvatar() }}" alt="avatar"
-                                 class="w-10 h-10 rounded-full"/>
+                        <a href="/manage"><img src="{{ Auth::user()->getAvatar() }} " alt="avatar"
+                     class="w-10 h-10 rounded-full"/></a>
                         </div>
                         <div class=" justify-center flex flex-row text-xs text-gray-400 font-semibold space-x-2 ">
 

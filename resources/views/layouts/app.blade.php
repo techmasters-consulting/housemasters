@@ -51,7 +51,7 @@
                         >
                         Add Property
                         </a>
-</div>
+                </div>
                 <div>&bull;</div>
                 <livewire:comment-notifications />
                 <div>&bull;</div>
@@ -60,20 +60,21 @@
             </div>
 
         @else
-            <img src="" alt="avatar"
-                 class="w-10 h-10 rounded-full">
+        <div class="justify-center items-center flex flex-row text-xs text-green1 font-semibold space-x-2 ">
+
             <a
                 href="{{ route('login') }}"
-                class="inline-block justify-center w-1/4 h-11 text-xs bg-green text-green1 font-semibold rounded-xl border border-green hover:border-green1 transition duration-150 ease-in px-6 py-3"
+                class="inline-block justify-center w-1/2 h-11 text-xs bg-green text-green1 font-semibold rounded-xl border border-green hover:border-green1 transition duration-150 ease-in px-6 py-3"
             >
                 Login
             </a>
             <a
                 href="{{ route('register') }}"
-                class="inline-block justify-center w-1/4 h-11 text-xs bg-gray-200 text-green1 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-3 py-3"
+                class="inline-block justify-center w-1/2 h-11 text-xs bg-gray-200 text-green1 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-3 py-3"
             >
                 Register
             </a>
+</div>
         @endauth
 
     </div>
