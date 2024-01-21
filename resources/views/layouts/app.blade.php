@@ -82,7 +82,11 @@
 
 </header>
 <main class="">
-
+@if (session()->has('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
     {{ $slot }}
 </main>
 <livewire:scripts />

@@ -14,21 +14,39 @@
                     </h4>
                     <div class=" mt-3">
                       
-                        <form wire:submit="save">
-    
-    @error('photos.*') <span class="error">{{ $message }}</span> @enderror
-    @if ($photos) 
-    
-      <img src="{{ $photos[0]->temporaryUrl()}}">
-    @endif
-
-
-    
-    <label for="file-upload" class="custom-file-upload">
+                    <form wire:submit.prevent="uploadMultipleFiles" >
+        <div class="row">
+            <div class="col-md-3">
+                <label for="">photos</label>
+                <label for="file-upload" class="custom-file-upload">
     <i class="fa fa-cloud-upload"></i> Custom Upload
 </label>
-<input id="file-upload" type="file" wire:model="photos" multiple />
-</form>
+
+                <input type="file" class="form-control" wire:model="photos" multiple >
+                @error('photos.*')
+                    <span style="color: red;" >{{ $message }}</span>
+                @enderror
+
+                <h2>Preview Images</h2>
+                <!-- Loading Message for Images -->
+                <div wire:loading wire:target="photos">Uploading Slide Images...</div>
+                @if( !empty( $photos ) )
+                    <div>
+                        @foreach ( $photos as $photo )
+                            <img src="{{ $photo->temporaryUrl() }}" alt="" style="width: 100px;" >
+                        @endforeach
+                    </div>
+                @endif 
+            </div>
+
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary" >Upload Slides</button>
+            </div>
+        </div>
+    </form>
+    
+    
+
                     </div>
                         <div class="text-gray-600 mt-3">
                         @admin

@@ -25,16 +25,18 @@ class CreateIdea extends Component
     public $location = 1;
     public $price;
     public $status = 1;
+    public $no_of_bathrooms = 1;
    
     #[Validate('image|max:1024')] // 1MB Max
-    public $photo;
+    public $photo = "storage/photo/sample.jpg";
 
     protected $rules = [
         'title' => 'required|min:4',
         'category' => 'required|integer|exists:categories,id',
-       // 'status' => 'required|integer|exists:statuses,id',
+       'status' => 'required|integer|exists:statuses,id',
         'location' => 'required|integer|exists:locations,id',
         'price' => 'required|integer',
+        'no_of_bathrooms' => 'required|integer',
         'description' => 'required|min:4',
     ];
 
@@ -46,7 +48,7 @@ class CreateIdea extends Component
 
         $this->validate();
         //$this->photo->store('public/photo');
-        $stored_file =  $this->photo->store('public/photo');
+      //  $stored_file =  $this->photo->store('photo');
     
 
 
@@ -58,14 +60,14 @@ class CreateIdea extends Component
             'price' =>$this->price,
             'title' => $this->title,
             'description' => $this->description,
-            'no_of_bathrooms' => '1',
-            'no_of_bedrooms' => '1',
-            'photo' => pathinfo($stored_file)['basename'],
+            'no_of_bathrooms' => $this->no_of_bathrooms,
+            'no_of_bedrooms' => substr($this->category, 0, 1),
+            'photo' => $this->photo,
             'description' => $this->description,
         ]);
 
         
-        
+       
 
  
              $this->reset('photo');

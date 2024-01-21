@@ -1,5 +1,6 @@
 <div>
     @auth
+    
         <form wire:submit.prevent="createIdea" action="#" method="POST" class="space-y-4 px-4 py-6">
             <div>
                 <input wire:model.defer="title" type="text" class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2" placeholder="Name Your Property" required>
@@ -28,9 +29,15 @@
                 <p class="text-red text-xs mt-1">{{ $message }}</p>
             @enderror
             </div>
-         
             <div>
-                <input wire:model.defer="price" class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2" type="number" min="0.00" max="10000.00" step="0.01" placeholder="How much?" required
+            <input wire:model.defer="no_of_bathrooms" class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2" type="number" min="1.00" max="10`00.00" step="0.01" placeholder="Bathrooms?" required
+                />
+                @error('no_of_bathrooms')
+                <p class="text-red text-xs mt-1">{{ $message }}</p>
+            @enderror
+            </div>
+            <div>
+                <input wire:model.defer="price" class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900 px-4 py-2" type="number" min="0.00" max="1000`00.00" step="0.01" placeholder="How much?" required
                 />
                 @error('price')
                     <p class="text-red text-xs mt-1">{{ $message }}</p>
@@ -45,23 +52,8 @@
                 @enderror
             </div>
       
-            <div class="flex items-center space-x-3">
-                <div>
-                            @error('photo.*') <span class="error">{{ $message }}</span> @enderror
-                    @if ($photo) 
-                   
-                    <img src="{{ $photo->temporaryUrl()}}">
-                    @endif
-
-                </div>
-                <div>
-                    <label for="file-upload" class="custom-file-upload">
-                    <i class="fa fa-cloud-upload"></i> Custom Upload
-                </label>
-
-                <input id="file-upload" type="file" wire:model="photo" />
-                </div>
-        </div>
+            
+       
             <div class="flex items-center justify-between space-x-3">
 
                 <!-- <button

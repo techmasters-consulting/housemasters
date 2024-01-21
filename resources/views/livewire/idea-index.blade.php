@@ -70,7 +70,7 @@
 
             </h4>
             <div class="w-full mt-3">
-                <img src="{{asset('storage/photo/'.$idea->photo)}}" alt="{{ $idea->photo}}">
+                <img src="{{asset($idea->photo)}}" alt="{{ $idea->photo}}">
              
             </div>
             <div class="text-gray-600 mt-3 line-clamp-3">
