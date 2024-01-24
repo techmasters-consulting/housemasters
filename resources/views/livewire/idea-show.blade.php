@@ -12,42 +12,10 @@
                                        <h4 class="text-xl font-semibold mt-2 md:mt-0">
               {{ $idea->title }}
                     </h4>
-                    <div class=" mt-3">
-                      
-                    <form wire:submit.prevent="uploadMultipleFiles" >
-        <div class="row">
-            <div class="col-md-3">
-                <label for="">photos</label>
-                <label for="file-upload" class="custom-file-upload">
-    <i class="fa fa-cloud-upload"></i> Custom Upload
-</label>
-
-                <input type="file" class="form-control" wire:model="photos" multiple >
-                @error('photos.*')
-                    <span style="color: red;" >{{ $message }}</span>
-                @enderror
-
-                <h2>Preview Images</h2>
-                <!-- Loading Message for Images -->
-                <div wire:loading wire:target="photos">Uploading Slide Images...</div>
-                @if( !empty( $photos ) )
-                    <div>
-                        @foreach ( $photos as $photo )
-                            <img src="{{ $photo->temporaryUrl() }}" alt="" style="width: 100px;" >
-                        @endforeach
-                    </div>
-                @endif 
+                    <div class="w-full mt-3">
+                <img src="{{asset($idea->photo)}}" alt="{{ $idea->photo}}">
+             
             </div>
-
-            <div class="col-md-12">
-                <button type="submit" class="btn btn-primary" >Upload Slides</button>
-            </div>
-        </div>
-    </form>
-    
-    
-
-                    </div>
                         <div class="text-gray-600 mt-3">
                         @admin
                             @if ($idea->spam_reports > 0)

@@ -101,6 +101,29 @@ class IdeaShow extends Component
     }
 
    
+
+    public function uploadMultipleFiles(){
+        
+
+        if( !empty( $this->photos ) ){
+            foreach( $this->photos as $photo ){
+               // $photo->store('photos');
+
+                $img = Image::make($photo->getRealPath());
+	    // extract image name
+        $img_name = $photo>getClientOriginalName();
+        // define file path => public/images 
+        $img_path = public_path('photos');
+        // resize and save the image.
+        $img->resize(300, 200)->save($img_path.'/'.$img_name);
+        
+        $imgs = $imgs . ',' . $img_name;
+     
+        }
+        $idea->photo = $imgs;
+        $idea->save();
+        }
+    }
  
     public function save()
     {

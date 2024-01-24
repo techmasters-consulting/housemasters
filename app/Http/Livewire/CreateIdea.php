@@ -28,7 +28,7 @@ class CreateIdea extends Component
     public $no_of_bathrooms = 1;
    
     #[Validate('image|max:1024')] // 1MB Max
-    public $photo = "storage/photo/sample.jpg";
+    public $photo = "https://images.unsplash.com/photo-1595222016771-1843541fa718?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80";
 
     protected $rules = [
         'title' => 'required|min:4',
@@ -65,12 +65,7 @@ class CreateIdea extends Component
             'photo' => $this->photo,
             'description' => $this->description,
         ]);
-
-        
-       
-
- 
-             $this->reset('photo');
+        // $this->reset('photo');
         // $this->idd++;
         $idea->vote(auth()->user());
 
